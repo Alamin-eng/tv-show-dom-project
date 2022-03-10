@@ -25,12 +25,14 @@ let setup = function () {
 
   //search
   searchElm.addEventListener("keyup", searchBar);
-  //selectShow function called
-  selectName(getAllShows());
-  // Event handler
+  //makeShow function called
+  makeShows(getAllShows());
+  // SelectShows Event handler 
   selectShows.addEventListener("change", function (e) {
     logShow(e.target.value).then((data) => {
+      console.log(e.target.value)
       getList = data;
+      console.log(getList)
       makePageforAll(getList);
       select(getList);
     });
@@ -42,6 +44,7 @@ let setup = function () {
 
     logShow(showId).then((data) => {
       getList = data;
+      console.log(getList)
       let filter = getList.filter((episode) => {
         if (Number(episode.id) === Number(getSelect)) {
           return episode;
@@ -146,7 +149,7 @@ function logShow(showNumber) {
 }
 
 // select show name
-function selectName(getShows) {
+function makeShows(getShows) {
   getShows.forEach(function (e) {
     let createOption = document.createElement("option");
     createOption.value = e.id;
