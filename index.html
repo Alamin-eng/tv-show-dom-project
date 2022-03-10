@@ -9,9 +9,48 @@
   </head>
 
   <body>
-    <div id="root">
+  <!-- fixed top logo -->
+    <div class="top-fixed">
+      <a href="#home">
+        <img class='tv-fixed' src="tv-guide-394836.png" alt="fixed tv guide red text logo">
+      </a>
     </div>
-    <div id="root2"> 
+  <!-- logo and search header -->
+    <div class="logoAndSearch" id="home">
+      <a href="#img-div">
+        <img src= "http://images6.fanpop.com/image/photos/43700000/Tv-Shows-or-Movies-ateegeecey-43791370-5435-2170.jpg"
+         class="img-div img-2" id="img-div">
+      </a>
+      <a href="#" onclick="setup()"><img src="tvlogo1.png" class="img-div"></a> 
+      <div>
+        <input type="search" id="search" placeholder="Search">
+        <label id="search-count"></label>
+      </div>
+    </div>
+  <!-- marquee text  -->
+    <marquee width="100%" direction="left" height="110px">
+      Click Red Tv Guide icon for Home Page
+    </marquee>
+
+  <!-- shows and episode select -->
+  <div class="shows-episodes">
+    <div>
+      <label for="selectShows">TV Shows</label> <br>
+      <select name="" id="selectShows"></select>
+    </div>
+    <div>
+      <label for="selectEpisode">Season and Episodes</label> <br>
+      <select id="selectEpisode"></select>
+    </div>
+  </div>
+  
+    <!-- <label for="selecName">TV Shows</label><br>
+    <select name="" id="selectName"></select> <br> <br>
+    <label for="selectEpisode">Season and Episodes</label><br>
+    <select id="selectEpisode"></select> -->
+
+  <!-- body div -->
+    <div id="root">
     </div>
     <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
     <script src="episodes.js"></script>
