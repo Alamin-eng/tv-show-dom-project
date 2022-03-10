@@ -82,7 +82,7 @@ marquee{
   font-size: large;
 }
 #search:focus{
-  width: 97%;
+  width: 90%;
   transition: .45s ease-out;
   background-color: rgb(247, 207, 133);
 }
@@ -118,6 +118,7 @@ label{
   color:rgb(231, 32, 5);
   font-size: larger;
 }
+
 @media only screen and (max-width: 890px) {
   .logoAndSearch{
   display: flex;

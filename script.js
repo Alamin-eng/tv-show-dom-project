@@ -16,21 +16,14 @@ let setup = function () {
       select(getList)
     })  */
 
-  // promise function called and applied anthor .then()
-  // logShow(82).then((e) =>{
-  // //create all episode and select
-  //   makePageforAll(getList)
-  //   select(getList)
-  // })
-
-  //search
+  //search event listner 
   searchElm.addEventListener("keyup", searchBar);
+
   //makeShow function called
   makeShows(getAllShows());
   // SelectShows Event handler 
   selectShows.addEventListener("change", function (e) {
     logShow(e.target.value).then((data) => {
-      console.log(e.target.value)
       getList = data;
       console.log(getList)
       makePageforAll(getList);
@@ -38,6 +31,7 @@ let setup = function () {
     });
   });
 
+  //select episode event listner
   selectEpisode.addEventListener("input", function () {
     let getSelect = selectEpisode.value;
     let showId = selectShows.value;
@@ -55,7 +49,7 @@ let setup = function () {
   });
 };
 
-//make page for all episodes
+//make page for all episodes function
 let makePageforAll = function (allEps) {
   let div = document.getElementById("root");
   div.innerHTML = ""; // very important
@@ -90,8 +84,8 @@ let makePageforAll = function (allEps) {
     );
   });
 };
-//searh bar function
 
+//searh bar function
 let searchBar = function (events) {
   let getSearchValue = events.target.value.toLowerCase();
   let getLabel = document.getElementById("search-count");
@@ -110,7 +104,7 @@ let searchBar = function (events) {
   makePageforAll(filterSearch);
 };
 
-//select episode -
+//select episode function -
 function select(list) {
   selectEpisode.innerHTML = "";
   list.forEach(function (episode) {
@@ -139,7 +133,7 @@ function select(list) {
     .catch((e) => console.log(e));
   } */
 
-//I tried pushing the datas to getList as its logging the all 73 objects, Aluns' way is not logging any objects when I console.log
+// function for fetch data (promise)
 function logShow(showNumber) {
   return fetch(`https://api.tvmaze.com/shows/${showNumber}/episodes`)
     .then((response) => response.json())
@@ -148,7 +142,7 @@ function logShow(showNumber) {
     });
 }
 
-// select show name
+// select show name function
 function makeShows(getShows) {
   getShows.forEach(function (e) {
     let createOption = document.createElement("option");
@@ -158,4 +152,5 @@ function makeShows(getShows) {
   });
 }
 
+// window onload event
 window.onload = setup;
