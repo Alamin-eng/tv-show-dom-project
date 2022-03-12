@@ -1,13 +1,13 @@
 body{
   margin: 1%;
-  background-color: rgb(3, 29, 54);
-  
+  padding: 0;
+  background:rgb(2, 22, 41);
+  font-family: 'Roboto Slab', serif;
 }
-.top-fixed{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  margin-bottom: 2%;
+h2{
+  font-family: 'Montserrat', sans-serif;
 }
+/* fixed tv logo */
 .tv-fixed{
   position: fixed;
   top:.9em;
@@ -15,21 +15,22 @@ body{
   width: 8em;
   height: auto;
 }
+/* logo and search div */
 .logoAndSearch{
   margin-top: 5.5em;
   display: grid;
   grid-template-columns: 1fr 1fr 3fr;
   gap:1.5em; 
-  
-  align-items:flex-start;
+  align-items:center;
 }
-
+/* left img */
 .img-div{
   margin-top: -10px;
   height: 140px;
-  width: 280px;
+  width: 300px;
   object-fit: contain;
 }
+/* marquee */
 marquee{
   color:aqua;
   margin-top: 1%;
@@ -39,13 +40,13 @@ marquee{
   display: grid;
   grid-template-columns: 1fr 1fr ;
 }
+/* root div where everything appended */
 #root div{
   margin: 15% 3% 3% 3%;
   box-shadow: 0 0 6px rgb(5, 218, 255);
+  background:linear-gradient(rgb(3, 14, 27) 11%, 35%, rgb(1, 25, 53)80%);
 }
-#root {
-  color: red;
-}
+
 #root{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -56,14 +57,15 @@ marquee{
   padding: 5px 10px;
 }
 .image{
-  height: 155px;
+  height: 225px;
   width: 275px;
   object-fit: contain;
   margin-top: 0;
 }
 .season-details{
-  margin-top: 0;
-  color: rgb(255, 254, 249);
+  margin-top: .2em;
+  margin-left: 2%;
+  color: rgb(236, 197, 0);
 }
 .Eps-details{
   padding: 0 10px;
@@ -115,10 +117,25 @@ marquee{
 }
 label{
   font-weight: bold;
-  color:rgb(231, 32, 5);
-  font-size: larger;
+  color:rgb(255, 94, 0);
+  font-size: medium;
+}
+/* level 500 - pages for all tv shows */
+#root2{
+  display: grid;
+  color:azure;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows:1fr;
+  text-align: center;
 }
 
+.showInnerFlex{
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+}
+
+/* mobile and other device layout handled */
 @media only screen and (max-width: 890px) {
   .logoAndSearch{
   display: flex;
@@ -156,6 +173,11 @@ label{
 }
 .img-div img{
   display: none;
+}
+/* mobile and other device layout handled */
+#root2{
+  display: grid;
+  grid-template-columns: 1fr;
 }
 }
   

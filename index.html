@@ -6,22 +6,25 @@
     <title>TV Show Project | Mohammad Alamin (My GitHub - Alamin-eng)</title>
     <link href="style.css" rel="stylesheet" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto+Slab:wght@300&display=swap"
+      rel="stylesheet">
   </head>
 
   <body>
   <!-- fixed top logo -->
     <div class="top-fixed">
-      <a href="#home">
+      <a href="" onclick="homePage()">
         <img class='tv-fixed' src="tv-guide-394836.png" alt="fixed tv guide red text logo">
       </a>
     </div>
   <!-- logo and search header -->
     <div class="logoAndSearch" id="home">
       <a href="#img-div">
-        <img src= "http://images6.fanpop.com/image/photos/43700000/Tv-Shows-or-Movies-ateegeecey-43791370-5435-2170.jpg"
+        <img src= "https://www.hollyfy.com/wp-content/uploads/2019/01/TV_grid_sm@3x.png"
          class="img-div img-2" id="img-div">
       </a>
-      <a href="#" onclick="setup()"><img src="tvlogo1.png" class="img-div"></a> 
+      <a href="#"><img src="tvlogo1.png" class="img-div"></a> 
       <div>
         <input type="search" id="search" placeholder="Search">
         <label id="search-count"></label>
@@ -35,28 +38,31 @@
   <!-- shows and episode select -->
   <div class="shows-episodes">
     <div>
-      <label for="selectShows">TV Shows</label> <br>
+      <label for="selectShows">Select TV Show</label> <br>
       <select name="" id="selectShows"></select>
-    </div>
+    </div> 
     <div>
       <label for="selectEpisode">Season and Episodes</label> <br>
       <select id="selectEpisode"></select>
     </div>
   </div>
-  
-    <!-- <label for="selecName">TV Shows</label><br>
-    <select name="" id="selectName"></select> <br> <br>
-    <label for="selectEpisode">Season and Episodes</label><br>
-    <select id="selectEpisode"></select> -->
 
   <!-- body div -->
     <div id="root">
     </div>
+    <hr>
+    <div id ="root2">
+
+    </div>
+    
     <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
     <script src="episodes.js"></script>
 
     <!-- Loads YOUR javascript code -->
+    <script src="after400.js"></script>
     <script src="shows.js"></script>
     <script src="script.js"></script>
+
+
   </body>
 </html>
