@@ -2,6 +2,7 @@
 
 // fetched array list
 let getList = [];
+let mode = "tv";
 //get elements
 let div = document.getElementById("root");
 let searchElm = document.getElementById("search");
@@ -11,7 +12,15 @@ let selectShows = document.getElementById("selectShows");
 // setup funtion for window on load
 let setup = function () {
   //search event listner
-  searchElm.addEventListener("keyup", searchTv);
+  searchElm.addEventListener("keyup", (search) => {
+    if (mode === "tv") {
+      searchTv(search);
+    } else if (mode === "episode") {
+      searchBar(search);
+    } else {
+      console.warn("Invalid mode!"); // warn is visible only to developer
+    }
+  });
 
   //makeShow function called
   makeShows(getAllShows());
@@ -20,6 +29,7 @@ let setup = function () {
   selectShows.addEventListener("change", function (e) {
     //makeShow function called
     logShow(e.target.value).then((data) => {
+      mode = "episode";
       getList = data;
       console.log(getList);
 
@@ -160,8 +170,12 @@ function searchTv(show) {
   let filterTv = allshow.filter(function (findShow) {
     let name = findShow.name.toLowerCase();
     let summary = findShow.summary.toLowerCase();
-
-    if (name.includes(getSearchValue) || summary.includes(getSearchValue)) {
+    let genere = findShow.rating.average.toString();
+    if (
+      name.includes(getSearchValue) ||
+      summary.includes(getSearchValue) ||
+      genere.includes(getSearchValue)
+    ) {
       return findShow;
     }
   });
@@ -171,7 +185,7 @@ function searchTv(show) {
   tvShowsPage(filterTv);
 }
 
-// --500 search bar for all tv shows
+// --500 search bar for all tv shows and episode
 
 // homepage function -- 400
 function tvShowsPage(tvShow) {
@@ -198,9 +212,18 @@ function tvShowsPage(tvShow) {
     createShowTitle.innerText = `${tv.name}`;
     let createLink = document.createElement("a");
     createLink.href = "#";
+    // link for get in to that shows page
+    createLink.addEventListener("click", (link) => {
+      mode = "episode";
+      logShow(tv.id).then((data) => {
+        getList = data;
+        makePageforAll(getList);
+        select(getList);
+      });
+    });
+ 
     let createShowImg = document.createElement("img");
     createShowImg.className = "image tvImg"; // img class
-    createShowImg.src = [tv.image.original];
 
     let createShowDetails = document.createElement("p");
     createShowDetails.className = "Eps-details";
@@ -217,18 +240,26 @@ function tvShowsPage(tvShow) {
     runtime.className = "season-details";
     let status = document.createElement("p");
     status.className = "season-details";
-    let country = document.createElement("p");
-    country.className = "season-details";
+    // let country = document.createElement("p");
+    // country.className = "season-details";
 
     ratingDetails.innerHTML = `<strong>Rating:   ${tv.rating.average} </strong>`;
     genres.innerHTML = `Genres : ${tv.genres} `;
     runtime.innerHTML = `Run time : ${tv.runtime}`;
     status.innerHTML = `Status : ${tv.status}`;
-    country.innerHTML = `Country : ${tv.network.country.name}`;
+    // country.innerHTML = `Country : ${tv.network.country.name}`;
+
     // appending elements
-    createLink.append(createShowImg);
+    if (tv.image === null) {
+      createShowImg.src = "";
+      createLink.append(createShowImg);
+    } else {
+      createShowImg.src = [tv.image.medium];
+      createLink.append(createShowImg);
+    } 
+
     div.appendChild(individualDiv);
-    innerFlexDiv.append(genres, runtime, country, status);
+    innerFlexDiv.append(genres, runtime, status);
     individualDiv.append(
       createShowTitle,
       createLink,
@@ -241,6 +272,7 @@ function tvShowsPage(tvShow) {
 
 // homePage funciton for Tv Guide icon
 function homePage() {
+  mode = "tv";
   tvShowsPage(getAllShows());
 }
 
