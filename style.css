@@ -3,6 +3,7 @@ body{
   padding: 0;
   background:rgb(2, 22, 41);
   font-family: 'Roboto Slab', serif;
+  height: 100vh;
 }
 h2{
   font-family: 'Montserrat', sans-serif;
@@ -44,7 +45,7 @@ marquee{
 #root div{
   margin: 15% 3% 3% 3%;
   box-shadow: 0 0 6px rgb(5, 218, 255);
-  background:linear-gradient(rgb(3, 14, 27) 11%, 35%, rgb(1, 25, 53)80%);
+  background:linear-gradient(35deg, rgb(10, 18, 29), 55%, rgb(7, 36, 69));
 }
 
 #root{
@@ -80,11 +81,11 @@ marquee{
   outline: none;
   border: none;
   height: 35px;
-  width: 75%;
+  width: 85%;
   font-size: large;
 }
 #search:focus{
-  width: 90%;
+  width: 99%;
   transition: .45s ease-out;
   background-color: rgb(247, 207, 133);
 }
@@ -134,9 +135,17 @@ label{
   flex-direction: column;
   align-items:flex-start;
 }
-
+footer{
+  color:rgb(205, 110, 2);
+  text-align: center;
+  font-weight: bold;
+  padding: .75em;
+}
 /* mobile and other device layout handled */
 @media only screen and (max-width: 890px) {
+  body{
+    font-size: 87%;
+  }
   .logoAndSearch{
   display: flex;
   flex-direction: column;
@@ -178,6 +187,7 @@ label{
 #root2{
   display: grid;
   grid-template-columns: 1fr;
+  margin: 4px;
 }
 }
   
